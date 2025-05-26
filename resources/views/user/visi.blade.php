@@ -8,7 +8,7 @@
 ">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="section-heading text-uppercase" style="color: black; font-weight: 700;">Visi Misi dan Tujuan</h2>
+            <h2 class="section-heading text-uppercase" style="color: black; font-weight: 700; font-size: 3rem;">Visi Misi dan Tujuan</h2>
         </div>
 
         <div class="row justify-content-center">
@@ -25,7 +25,7 @@
                             <h4 class="judul text-danger mt-4">Tujuan Sekolah</h4>
                             <p class="isi">{{ $profilsekolah->tujuan }}</p>
                         @else
-                            <p class="isi text-muted"><em>Data profil sekolah belum tersedia.</em></p>
+                            <p class="isi text-muted"><em>Data Visi Misi dan Tujuan Sekolah belum tersedia.</em></p>
                         @endif
                     </div>
                 </div>

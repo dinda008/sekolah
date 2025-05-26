@@ -39,7 +39,7 @@ class StrukturOrganisasiController extends Controller
             'keterangan' => $request->keterangan,
         ]);
 
-        return redirect()->route('profil.struktur')->with('success', 'Data berhasil ditambahkan');
+        return redirect()->route('profil.struktur')->with('message', 'Data berhasil ditambahkan');
     }
 
     // Tampilkan form edit data
@@ -74,7 +74,7 @@ class StrukturOrganisasiController extends Controller
     $strukturorganisasi->keterangan = $request->keterangan;
     $strukturorganisasi->save();
 
-    return redirect()->route('profil.struktur')->with('success', 'Data berhasil diupdate');
+    return redirect()->route('profil.struktur')->with('message', 'Struktur Organisasi berhasil diperbarui');
 }
 
     public function delete($id_struktur)

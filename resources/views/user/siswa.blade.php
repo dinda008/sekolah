@@ -8,7 +8,7 @@
     ">
     <div class="container" style="background-color: rgba(255, 255, 255, 0.85); padding: 30px; border-radius: 12px;">
         <div class="text-center mb-5">
-            <h2 class="section-heading text-uppercase" style="color: black; font-weight: 700;">Daftar Siswa</h2>
+            <h2 class="section-heading text-uppercase" style="color: black; font-weight: 700; font-size: 3rem;">Daftar Siswa</h2>
         </div>
 
         <!-- Filter Tahun Ajaran -->

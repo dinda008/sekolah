@@ -17,7 +17,7 @@ class JabatanSeeder extends Seeder
             ['nama_jabatan' => 'Wakasek Kurikulum', 'prioritas' => 2],
             ['nama_jabatan' => 'Wakasek Kesiswaan', 'prioritas' => 3],
             ['nama_jabatan' => 'Wakasek Humas', 'prioritas' => 4],
-            ['nama_jabatan' => 'Waka Sarpras', 'prioritas' => 5],
+            ['nama_jabatan' => 'Wakasek Sarpras', 'prioritas' => 5],
             ['nama_jabatan' => 'Bendahara', 'prioritas' => 6],
             ['nama_jabatan' => 'Guru Sekolah', 'prioritas' => 7],
             ['nama_jabatan' => 'STAFF TU', 'prioritas' => 8],

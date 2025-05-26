@@ -77,6 +77,13 @@
     </a>
     </li>
 
+     <!-- Nav Item - PPDB Collapse Menu -->
+    <li class="nav-item">
+    <a class="nav-link collapsed" href="{{ route('ppdb') }}">
+        <i class="fas fa-fw fa-photo-video"></i>
+        <span>PPDB</span>
+    </a>
+    </li>
 
     <!-- Nav Item - User Collapse Menu -->
     {{-- @if (auth()->user()->role == 'admin') --}}

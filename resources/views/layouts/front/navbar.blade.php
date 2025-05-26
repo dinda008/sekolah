@@ -7,9 +7,16 @@
 
         <nav id="navmenu" class="navmenu">
             <ul>
-                <li><a href="{{ route('home') }}" class="active">Home<br></a></li>
+                <li>
+                    <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">
+                        Home
+                    </a>
+                </li>
+
                 <li class="dropdown">
-                    <a href="">Profil</a>
+                    <a href="#" class="{{ request()->routeIs('home.visi_misi_tujuan', 'home.sejarah', 'home.struktur_organisasi') ? 'active' : '' }}">
+                        Profil
+                    </a>
                     <ul>
                         <li><a href="{{ route('home.visi_misi_tujuan') }}">Visi Misi dan Tujuan</a></li>
                         <li><a href="{{ route('home.sejarah') }}">Sejarah Singkat</a></li>
@@ -18,7 +25,9 @@
                 </li>
 
                 <li class="dropdown">
-                    <a href="">Tentang Kami</a>
+                    <a href="#" class="{{ request()->routeIs('home.pegawai', 'home.siswa', 'home.sarana_prasarana') ? 'active' : '' }}">
+                        Tentang Kami
+                    </a>
                     <ul>
                         <li><a href="{{ route('home.pegawai') }}">Data Pegawai</a></li>
                         <li><a href="{{ route('home.siswa') }}">Data Siswa</a></li>
@@ -26,15 +35,33 @@
                     </ul>
                 </li>
 
-                <li><a href="{{ route('home.galeri') }}">Galeri</a></li>
-                <li><a href="{{ route('home.berita') }}">Berita</a></li>
-                <li><a href="events.html">PPDB</a></li>
-                <li><a href="{{ route('home.kontak') }}">Kontak</a></li>
+                <li>
+                    <a href="{{ route('home.galeri') }}" class="{{ request()->routeIs('home.galeri', 'home.galeri.tampilkan') ? 'active' : '' }}">
+                        Galeri
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('home.berita') }}" class="{{ request()->routeIs('home.berita', 'home.berita.show') ? 'active' : '' }}">
+                        Berita
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('home.ppdb') }}" class="{{ request()->routeIs('home.ppdb') ? 'active' : '' }}">
+                        PPDB
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('home.kontak') }}" class="{{ request()->routeIs('home.kontak') ? 'active' : '' }}">
+                        Kontak
+                    </a>
+                </li>
             </ul>
+
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
-
-        
 
     </div>
 </header>

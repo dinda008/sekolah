@@ -7,16 +7,16 @@
   <span class="sitename" style="color: #fff;">SMP NEGERI 2 PRAJEKAN</span>
 </a>
         <div class="footer-contact pt-3">
-          <p>A108 Adam Street</p>
-          <p>New York, NY 535022</p>
-          <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-          <p><strong>Email:</strong> <span>info@example.com</span></p>
+          <p>Jl. Raya Prajekan</p>
+          <p>Kab. Bondowoso,Jawa Timur, Indonesia</p>
+          <p class="mt-3"><strong>Phone:</strong> <span>0332 - 560751</span></p>
+          <p><strong>Email:</strong> <span>info.esprada</span></p>
         </div>
         <div class="social-links d-flex mt-4">
           <a href="https://facebook.com/smpn2prajekan" target="_blank" class="text-white fs-3"><i class="bi bi-facebook"></i></a>
-          <a href="https://instagram.com/smpn2prajekan" target="_blank" class="text-white fs-3"><i class="bi bi-instagram"></i></a>
+          <a href="https://www.instagram.com/info.esprada" target="_blank" class="text-white fs-3"><i class="bi bi-instagram"></i></a>
           <a href="https://twitter.com/smpn2prajekan" target="_blank" class="text-white fs-3"><i class="bi bi-twitter"></i></a>
-          <a href="https://youtube.com/smpn2prajekan" target="_blank" class="text-white fs-3"><i class="bi bi-youtube"></i></a>
+          <a href="https://www.youtube.com/@info.esprada" target="_blank" class="text-white fs-3"><i class="bi bi-youtube"></i></a>
 
         </div>
       </div>
@@ -24,11 +24,10 @@
       <div class="col-lg-2 col-md-3 footer-links">
           <h4>Useful Links</h4>
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
+            <li><a href="{{ route('home') }}">Home</a></li>
+            <li><a href="{{ route('home.berita') }}">Berita</a></li>
+            <li><a href="{{ route('home.galeri') }}">Galeri</a></li>
+            <li><a href="{{ route('home.ppdb') }}">PPDB</a></li>
           </ul>
         </div>
         

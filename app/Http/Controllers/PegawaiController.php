@@ -30,13 +30,12 @@ class PegawaiController extends Controller
     public function insert(Request $request)
     {
         $request->validate([
-            'nama' => 'required|string',
-            'nip' => 'required|unique:pegawai,nip',
-            'id_jabatan' => 'required|exists:jabatan,id_jabatan',
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'sambutan' => 'nullable|string',
-        ]);
-
+    'nama' => 'required|string',
+    'nip' => 'required|digits:18|unique:pegawai,nip',
+    'id_jabatan' => 'required|exists:jabatan,id_jabatan',
+    'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+    'sambutan' => 'nullable|string',
+]);
         if ($request->hasFile('foto')) {
             $filePath = $request->file('foto')->store('pegawai', 'public');
         } else {
@@ -69,12 +68,12 @@ class PegawaiController extends Controller
         $pegawai = Pegawai::findOrFail($id_pegawai);
 
         $request->validate([
-            'nama' => 'required|string|max:255',
-            'nip' => 'required|string|max:255|unique:pegawai,nip,' . $id_pegawai . ',id_pegawai',
-            'id_jabatan' => 'required|exists:jabatan,id_jabatan',
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'sambutan' => 'nullable|string',
-        ]);
+    'nama' => 'required|string|max:255',
+    'nip' => 'required|digits:18|unique:pegawai,nip,' . $id_pegawai . ',id_pegawai',
+    'id_jabatan' => 'required|exists:jabatan,id_jabatan',
+    'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+    'sambutan' => 'nullable|string',
+]);
 
         // Simpan field biasa
         $pegawai->nama = $request->nama;

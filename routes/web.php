@@ -10,6 +10,7 @@ use App\Http\Controllers\KelasController;
 use App\Http\Controllers\KepalaSekolahController;
 use App\Http\Controllers\Pegawai;
 use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\PpdbController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\SaranaController;
 use App\Http\Controllers\SaranController;
@@ -115,6 +116,15 @@ Route::controller(GaleriController::class)->prefix('galeri')->group(function() {
     Route::delete('/delete{id_galeri}', 'delete')->name('galeri.delete');
 });
 
+Route::controller(PpdbController::class)->prefix('ppdb')->group(function() {
+    Route::get('', 'index')->name('ppdb');
+    Route::get('/tambah_ppdb', 'tambah_ppdb')->name('ppdb.insert');
+    Route::post('/tambah_ppdb','insert')->name('ppdb.tambah_ppdb.insert');
+    Route::get('/edit/{id_ppdb}', 'edit')->name('ppdb.edit');
+    Route::put('/update/{id_ppdb}', 'update')->name('ppdb.update');
+    Route::delete('/delete/{id_ppdb}', 'delete')->name('ppdb.delete'); 
+});
+
 
 // Route untuk halaman home (landing page)
     Route::get('/', [HomeController::class, 'home'])->name('home');
@@ -132,5 +142,6 @@ Route::controller(GaleriController::class)->prefix('galeri')->group(function() {
         Route::get('/kontak', 'kontak')->name('home.kontak');
         Route::get('/galeri', 'galeri')->name('home.galeri');
         Route::get('/galeri/{id_galeri}', 'tampilkan')->name('home.galeri.tampilkan');
+        Route::get('/ppdb', 'ppdb')->name('home.ppdb');
 });
     

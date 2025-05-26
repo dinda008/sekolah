@@ -23,13 +23,13 @@
                     </div> 
 
                     <!-- NIP -->
-                    <div class="form-group">
-                        <label>NIP</label>
-                        <input type="text" name="nip" class="form-control">
-                        @error('nip') 
-                            <small class="text-danger">{{ $message }}</small> 
-                        @enderror
-                    </div> 
+                   <div class="form-group">
+                    <label>NIP</label>
+                    <input type="text" name="nip" class="form-control" maxlength="18" minlength="18" pattern="\d{18}" title="NIP harus terdiri dari 18 angka" required>
+                    @error('nip') 
+                        <small class="text-danger">{{ $message }}</small> 
+                    @enderror
+                </div>
 
                     <!-- Jabatan -->
                     <div class="form-group">

@@ -27,7 +27,8 @@
         <div class="row align-items-center gy-4">
             {{-- Foto Kepala Sekolah --}}
             <div class="col-lg-5 d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
-                <div style="width: 100%; max-width: 400px; aspect-ratio: 3/4; overflow: hidden; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+                <div class="kepsek-foto-container" 
+                     style="width: 100%; max-width: 320px; aspect-ratio: 3/4; overflow: hidden; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
                     <img 
                         src="{{ asset('storage/' . $kepalaSekolah->foto) }}" 
                         alt="{{ $kepalaSekolah->nama }}" 
@@ -39,17 +40,25 @@
             {{-- Teks Sambutan --}}
             <div class="col-lg-7" data-aos="fade-up" data-aos-delay="200">
                 <h2 class="fw-bold mb-3">Sambutan Kepala Sekolah</h2>
-                <h5 class="mb-1">{{ $kepalaSekolah->nama }}</h5>
-                <p class="mb-3" style="font-size: 0.95rem;">
+                <h5 class="mb-1" style="color: #2c3e50; font-size: 2rem; font-weight: 700;">{{ $kepalaSekolah->nama }}</h5>
+                <p class="mb-3" style="font-size: 1.25rem; color: #2980b9; font-weight: 600;">
                     NIP: {{ $kepalaSekolah->nip ?? '-' }}
                 </p>
-                <p style="text-align: justify; font-size: 1.1rem;">
+                <p style="text-align: justify; font-size: 1.1rem; color: #444;">
                     {{ $kepalaSekolah->sambutan ?? 'Belum ada sambutan yang ditulis.' }}
                 </p>
             </div>
         </div>
     </div>
 </section>
+
+<style>
+    @media (max-width: 768px) {
+        .kepsek-foto-container {
+            max-width: 280px !important;
+        }
+    }
+</style>
 @else
 <section style="background-color: #ffffff; color: #111; padding: 60px 0; margin-top: -20px;">
     <div class="container text-center">
@@ -61,7 +70,7 @@
     {{-- Stats Section --}}
 <section id="counts" class="section counts">
     <div class="container-fluid" data-aos="fade-up" data-aos-delay="100">
-        <div class="row gx-0 gy-0 justify-content-center">
+        <div class="row gx-6 gy-8 justify-content-center">
             {{-- Siswa --}}
             <div class="col-lg-3 col-md-6">
                 <div class="stats-item text-center w-100 h-100">
@@ -105,12 +114,12 @@
 <section class="trainers-index py-5 mb-5">
     <div class="container">
         <div class="row">
-            @foreach ($wakilKepalaSekolah as $wakil)
-                <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+            @forelse ($wakilKepalaSekolah as $wakil)
+                <div class="col-lg-3 col-md-4 col-sm-6 d-flex mb-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="member w-100 text-center" 
                          style="background-color: #f9f9f9; 
                                 box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
-                                padding: 20px; 
+                                padding: 15px; 
                                 border: 1px solid #ddd; 
                                 border-radius: 8px;">
                         
@@ -119,23 +128,32 @@
                                 src="{{ asset('storage/' . $wakil->foto) }}" 
                                 class="img-fluid"
                                 alt="{{ $wakil->nama }}"
-                                style="object-fit: cover; width: 100%; height: 320px; border-radius: 6px;">
+                                style="object-fit: cover; width: 100%; height: 280px; border-radius: 6px;">
                         </a>
 
-                        <div class="member-content" style="padding-top: 1rem; padding-bottom: 1rem;">
-                            <h4 style="font-size: 2rem; margin-bottom: 0.5rem;">{{ $wakil->nama }}</h4>
-                            <p style="font-size: 1rem; margin-bottom: 0.5rem;">NIP: {{ $wakil->nip ?? '-' }}</p>
-                            <span style="font-size: 1.25rem; display: block; margin-bottom: 1rem;">
+                        <div class="member-content" style="padding-top: 0.8rem; padding-bottom: 0.8rem;">
+                            <h4 style="font-size: 1.5rem; margin-bottom: 0.4rem;">{{ $wakil->nama }}</h4>
+                            <p style="font-size: 1rem; margin-bottom: 0.4rem; color: #333; font-weight: 600;">NIP: {{ $wakil->nip ?? '-' }}</p>
+                            <span style="font-size: 1.1rem; display: block; color: #2980b9; font-weight: 600;">
                                 {{ $wakil->jabatan->nama_jabatan }}
                             </span>
                         </div>
                     </div>
                 </div>
-            @endforeach
+            @empty
+                <div class="col-12">
+                    <div class="text-center p-5" 
+                         style="background-color: #f9f9f9; 
+                                border: 1px solid #ddd; 
+                                border-radius: 8px; 
+                                box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                        <p style="font-size: 1.25rem; color: #888;">Belum ada data Wakil Kepala Sekolah yang ditampilkan.</p>
+                    </div>
+                </div>
+            @endforelse
         </div>
     </div>
 </section>
-
 
 {{-- Berita Terbaru --}}
 <section id="berita-home" class="section py-5" style="background-color: #f8f9fa;">
@@ -188,28 +206,37 @@
 </section>
 
     {{-- Features Section --}}
-   <section id="counts" class="section counts">
+  <section id="counts" class="section counts">
     <div class="container-fluid" data-aos="fade-up" data-aos-delay="100">
         <div class="row gy-4">
-            @foreach ($ekstrakurikuler as $ekstra)
-            <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="{{ $loop->iteration * 100 }}">
-                <div 
-                    class="features-item text-center p-4" 
-                    style="background-color: rgba(255, 255, 255, 0.7); border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-                    
-                    <img 
-                        src="{{ asset('storage/' . $ekstra->logo) }}" 
-                        alt="{{ $ekstra->nama_ekstra }}" 
-                        class="img-fluid mb-3" 
-                        style="max-height: 80px;">
-                    
-                    <h3>{{ $ekstra->nama_ekstra }}</h3>
+            @if ($ekstrakurikuler->count() > 0)
+                @foreach ($ekstrakurikuler as $ekstra)
+                <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="{{ $loop->iteration * 100 }}">
+                    <div 
+                        class="features-item text-center p-4" 
+                        style="background-color: rgba(255, 255, 255, 0.7); border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                        
+                        <img 
+                            src="{{ asset('storage/' . $ekstra->logo) }}" 
+                            alt="{{ $ekstra->nama_ekstra }}" 
+                            class="img-fluid mb-3" 
+                            style="max-height: 80px;">
+                        
+                        <h3>{{ $ekstra->nama_ekstra }}</h3>
+                    </div>
                 </div>
-            </div>
-            @endforeach
+                @endforeach
+            @else
+                <div class="col-12 d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
+                    <div 
+                        class="features-item text-center p-5" 
+                        style="background-color: rgba(255, 255, 255, 0.7); border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); max-width: 400px;">
+                        <p class="fs-5 mb-0" style="color: #555;"><em>Data ekstrakurikuler belum tersedia.</em></p>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
 </section>
-
 </div>
 @endsection

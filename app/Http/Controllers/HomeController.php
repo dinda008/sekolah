@@ -8,6 +8,7 @@ use App\Models\Galeri;
 use App\Models\Kelas;
 use Illuminate\Http\Request;
 use App\Models\Pegawai; // <-- Pakai model Pegawai, bukan SambutanKepalaSekolah
+use App\Models\PpdbInfo;
 use App\Models\ProfilSekolah;
 use App\Models\SaranaPrasarana;
 use App\Models\Sejarah;
@@ -158,4 +159,10 @@ public function home()
         $galeri = Galeri::findOrFail($id_galeri);
         return view('user.galeri.galeri_show', compact('galeri'));
     }
+
+    public function ppdb()
+{
+    $ppdb = PpdbInfo::all(); // ambil semua data PPDB
+    return view('user.ppdb', compact('ppdb'));
+}
 }

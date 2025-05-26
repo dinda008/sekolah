@@ -4,12 +4,15 @@
  
 @section('contents')
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Profil Sekolah</h1>
+<h1 class="h3 mb-2 text-gray-800">Visi Misi dan Tujuan</h1>
 
-@if (session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
+@if(session('message'))
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  {{session('message')}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
 @endif
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
