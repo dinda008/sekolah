@@ -24,7 +24,7 @@
                     <!-- NIP -->
                     <div class="form-group">
                         <label>NIP</label>
-                        <input type="text" name="nip" class="form-control" value="{{ $pegawai->nip }}" maxlength="18" minlength="18" pattern="\d{18}" title="NIP harus terdiri dari 18 angka" required>
+                        <input type="text" name="nip" class="form-control" value="{{ old('nip', $pegawai->nip) }}" pattern="\d{18}" title="NIP harus terdiri dari 18 angka jika diisi">
                         @error('nip') <small class="text-danger">{{ $message }}</small> @enderror
                     </div>
                     

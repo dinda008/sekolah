@@ -11,5 +11,6 @@ class PpdbInfo extends Model
     protected $fillable = [
         'poster',
         'formulir',
+        'syarat_ketentuan', // ditambahkan agar bisa disimpan ke database
     ];
 }

@@ -23,13 +23,13 @@
                     </div> 
 
                     <!-- NIP -->
-                   <div class="form-group">
-                    <label>NIP</label>
-                    <input type="text" name="nip" class="form-control" maxlength="18" minlength="18" pattern="\d{18}" title="NIP harus terdiri dari 18 angka" required>
-                    @error('nip') 
-                        <small class="text-danger">{{ $message }}</small> 
-                    @enderror
-                </div>
+                    <div class="form-group">
+                        <label>NIP <small class="text-muted">(Opsional, 18 digit jika diisi)</small></label>
+                        <input type="text" name="nip" class="form-control" maxlength="18" pattern="\d{18}" title="NIP harus terdiri dari 18 digit angka jika diisi">
+                        @error('nip') 
+                            <small class="text-danger">{{ $message }}</small> 
+                        @enderror
+                    </div>
 
                     <!-- Jabatan -->
                     <div class="form-group">
@@ -76,7 +76,21 @@
 
 <!-- SCRIPT UNTUK MENAMPILKAN SAMBUTAN DAN PREVIEW FOTO -->
 <script>
-    extends('layouts.app')
-</script>
+    // Tampilkan sambutan hanya jika jabatan adalah Kepala Sekolah
+    document.getElementById('jabatan-select').addEventListener('change', function () {
+        var sambutanGroup = document.getElementById('sambutan-group');
+        var selected = this.options[this.selectedIndex].text.toLowerCase();
+        sambutanGroup.style.display = selected.includes('kepala sekolah') ? 'block' : 'none';
+    });
 
+    // Preview foto
+    document.querySelector('input[name="foto"]').addEventListener('change', function (e) {
+        const [file] = this.files;
+        const preview = document.getElementById('preview-image');
+        if (file) {
+            preview.src = URL.createObjectURL(file);
+            preview.style.display = 'block';
+        }
+    });
+</script>
 @endsection

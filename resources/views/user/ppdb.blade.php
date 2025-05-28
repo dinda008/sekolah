@@ -14,43 +14,62 @@
         </div>
 
         <div class="row justify-content-center">
-            <div class="col-lg-10">
-                <div class="card-ppdb">
+            <div class="col-12 d-flex justify-content-center">
+                <div class="card-ppdb w-100" style="max-width: 900px;">
                     <div class="card-block">
                         @if($ppdb->isEmpty())
                             <p class="isi text-muted text-center"><em>Belum ada informasi PPDB saat ini.</em></p>
                         @else
                             @foreach($ppdb as $item)
+                            <div class="row align-items-start mb-4">
                                 {{-- Poster --}}
-                                @if($item->poster)
-                                    <div class="text-center mb-4">
+                                <div class="col-md-5 mb-3 mb-md-0 text-center">
+                                    @if($item->poster)
                                         <img 
                                             src="{{ asset('storage/' . $item->poster) }}" 
                                             alt="Poster PPDB" 
                                             class="img-fluid rounded"
                                             style="max-height: 400px; object-fit: cover;"
                                         >
-                                    </div>
-                                @endif
-
-                                {{-- Formulir --}}
-                                <div class="text-center mt-3">
-                                    @if($item->formulir)
-                                        <a 
-                                            href="{{ asset('storage/' . $item->formulir) }}" 
-                                            target="_blank" 
-                                            class="btn btn-primary"
-                                        >
-                                            Unduh Formulir PPDB
-                                        </a>
                                     @else
-                                        <p class="text-muted">Formulir belum tersedia.</p>
+                                        <div class="bg-secondary text-white d-flex align-items-center justify-content-center" 
+                                             style="height: 300px; border-radius: 8px;">
+                                            <span class="px-3">Poster belum tersedia</span>
+                                        </div>
                                     @endif
                                 </div>
 
-                                @if (!$loop->last)
-                                    <hr class="my-4">
+                                {{-- Syarat dan Ketentuan --}}
+                                <div class="col-md-7">
+                                    <h5 class="font-weight-bold">Syarat & Ketentuan:</h5>
+                                    <div class="isi">
+                                        @if($item->syarat_ketentuan)
+                                            {!! nl2br(e($item->syarat_ketentuan)) !!}
+                                        @else
+                                            <em class="text-muted">Belum ada syarat & ketentuan yang ditampilkan.</em>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{-- Formulir --}}
+                            <div class="text-center mb-4">
+                                @if($item->formulir)
+                                    <a 
+                                        href="{{ asset('storage/' . $item->formulir) }}" 
+                                        target="_blank" 
+                                        class="btn btn-primary"
+                                    >
+                                        Unduh Formulir PPDB
+                                    </a>
+                                @else
+                                    <p class="text-muted">Formulir belum tersedia.</p>
                                 @endif
+                            </div>
+
+                            @if (!$loop->last)
+                                <hr class="my-4">
+                            @endif
                             @endforeach
                         @endif
                     </div>
@@ -65,7 +84,7 @@
 @section('styles')
 <style>
     .card-ppdb {
-        background-color: rgba(240, 248, 255, 0.9); /* Transparansi */
+        background-color: rgba(240, 248, 255, 0.9);
         border: none;
         border-radius: 12px;
         padding: 30px;
@@ -80,6 +99,12 @@
 
     .section-heading {
         font-size: 2.5rem;
+    }
+
+    @media (max-width: 768px) {
+        .section-heading {
+            font-size: 2rem;
+        }
     }
 </style>
 @endsection

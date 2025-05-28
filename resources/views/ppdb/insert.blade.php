@@ -14,7 +14,6 @@
 </div>
 @endif
 
-{{-- Tampilkan error validasi --}}
 @if ($errors->any())
 <div class="alert alert-danger">
     <ul class="mb-0">
@@ -32,17 +31,8 @@
     <div class="card-body">
         <form action="{{ route('ppdb.tambah_ppdb.insert') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <div class="form-group border p-3 mb-3 rounded">
-                <label for="dokumen">Upload Dokumen (PDF, DOC, DOCX)</label>
-                <input type="file" 
-                       class="form-control-file @error('dokumen') is-invalid @enderror" 
-                       id="dokumen" name="dokumen" 
-                       accept=".pdf,.doc,.docx" 
-                       required>
-                @error('dokumen')
-                    <small class="text-danger">{{ $message }}</small>
-                @enderror
-            </div>
+
+            {{-- Poster (dipindah ke atas) --}}
             <div class="form-group border p-3 mb-3 rounded">
                 <label for="poster">Upload Poster (JPG, JPEG, PNG)</label>
                 <input type="file" 
@@ -60,13 +50,47 @@
                          style="display:none; max-width: 300px; max-height: 200px; width: auto; height: auto; border: 1px solid #ddd; border-radius: 8px;">
                 </div>
             </div>
+
+            {{-- Dokumen --}}
+            <div class="form-group border p-3 mb-3 rounded">
+                <label for="dokumen">Upload Dokumen (PDF, DOC, DOCX, XLS, XLSX)</label>
+                <input type="file" 
+                       class="form-control-file @error('dokumen') is-invalid @enderror" 
+                       id="dokumen" name="dokumen" 
+                       accept=".pdf,.doc,.docx,.xls,.xlsx,
+                               application/msword,
+                               application/vnd.openxmlformats-officedocument.wordprocessingml.document,
+                               application/vnd.ms-excel,
+                               application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                       required>
+                @error('dokumen')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+
+                {{-- Preview nama file dokumen --}}
+                <div class="mt-2">
+                    <strong>Dokumen dipilih:</strong>
+                    <p id="dokumenPreview" class="text-muted">Belum ada file.</p>
+                </div>
+            </div>
+
+            {{-- Syarat dan Ketentuan --}}
+            <div class="form-group border p-3 mb-3 rounded">
+                <label for="syarat_ketentuan">Syarat dan Ketentuan</label>
+                <textarea name="syarat_ketentuan" id="syarat_ketentuan" rows="5" class="form-control @error('syarat_ketentuan') is-invalid @enderror" required>{{ old('syarat_ketentuan') }}</textarea>
+                @error('syarat_ketentuan')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+
             <button type="submit" class="btn btn-primary">Kirim</button>
         </form>
     </div>
 </div>
 
-{{-- Script preview gambar --}}
+{{-- Script preview --}}
 <script>
+    // Preview gambar poster
     document.getElementById('poster').addEventListener('change', function(event) {
         const file = event.target.files[0];
         const preview = document.getElementById('imagePreview');
@@ -81,6 +105,18 @@
         } else {
             preview.src = '#';
             preview.style.display = 'none';
+        }
+    });
+
+    // Preview nama file dokumen
+    document.getElementById('dokumen').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        const previewText = document.getElementById('dokumenPreview');
+
+        if (file) {
+            previewText.textContent = file.name;
+        } else {
+            previewText.textContent = 'Belum ada file.';
         }
     });
 </script>

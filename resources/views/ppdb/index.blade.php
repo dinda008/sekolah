@@ -15,7 +15,7 @@
 </div>
 @endif
 
-<!-- DataTales Example -->
+<!-- DataTables Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <a href="{{ route('ppdb.insert') }}" class="btn btn-primary btn-sm">
@@ -30,6 +30,7 @@
                         <th>No.</th>
                         <th>Dokumen (Formulir)</th>
                         <th>Poster</th>
+                        <th>Syarat & Ketentuan</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -39,12 +40,23 @@
                     <tr>
                         <td>{{ $no++ }}</td>
                         <td>
-                            <a href="{{ asset('storage/' . $row->formulir) }}" target="_blank">
+                            @if($row->formulir)
+                            <a href="{{ asset('storage/' . $row->formulir) }}" target="_blank" rel="noopener noreferrer">
                                 {{ basename($row->formulir) }}
                             </a>
+                            @else
+                            <span class="text-muted">Tidak ada dokumen</span>
+                            @endif
                         </td>
                         <td>
-                            <img src="{{ asset('storage/' . $row->poster) }}" alt="Poster PPDB" width="60px">
+                            @if($row->poster)
+                            <img src="{{ asset('storage/' . $row->poster) }}" alt="Poster PPDB" width="60" style="border-radius: 4px;">
+                            @else
+                            <span class="text-muted">Tidak ada poster</span>
+                            @endif
+                        </td>
+                        <td style="max-width: 250px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                            {{ $row->syarat_ketentuan }}
                         </td>
                         <td>
                             <div class="d-flex" style="gap: 8px;">
@@ -66,7 +78,7 @@
                     
                     @if($ppdb->isEmpty())
                     <tr>
-                        <td colspan="4" class="text-center">Data PPDB belum tersedia.</td>
+                        <td colspan="5" class="text-center">Data PPDB belum tersedia.</td>
                     </tr>
                     @endif
                 </tbody>

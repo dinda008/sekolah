@@ -72,11 +72,13 @@ public function home()
 {
     // Join tabel jabatan agar bisa orderBy kolom prioritas
     $pegawai = Pegawai::join('jabatan', 'pegawai.id_jabatan', '=', 'jabatan.id_jabatan')
-        ->orderBy('jabatan.prioritas', 'asc')
-        ->select('pegawai.*') // penting: ambil hanya kolom pegawai agar tidak bentrok
-        ->with('jabatan')
-        ->get();
-
+    ->orderBy('jabatan.prioritas', 'asc')
+    ->select('pegawai.*')
+    ->with('jabatan')
+    ->get()
+    ->sortBy(function($item) {
+        return ($item->nip == '-' || empty($item->nip)) ? 1 : 0;
+    });
     return view('user.pegawai', compact('pegawai'));
 }
 

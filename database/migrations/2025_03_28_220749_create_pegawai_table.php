@@ -11,19 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pegawai', function (Blueprint $table) {
+                Schema::create('pegawai', function (Blueprint $table) {
             $table->id('id_pegawai');
             $table->string('nama', 250);
-            $table->string('nip', 50);
+            $table->string('nip', 50)->nullable(); // <-- di sini diubah
             $table->string('foto', 255)->nullable();
             
             // Kolom sambutan (hanya untuk kepala sekolah)
             $table->text('sambutan')->nullable();
             
             // Foreign Key
-            $table->unsignedBigInteger('id_jabatan')->default(1); // Misalnya default ke jabatan pertama
+            $table->unsignedBigInteger('id_jabatan')->default(1);
             $table->foreign('id_jabatan')->references('id_jabatan')->on('jabatan')->onDelete('cascade');
-        
+
             $table->timestamps();
         });
         

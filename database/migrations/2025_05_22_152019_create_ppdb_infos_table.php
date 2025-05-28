@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('ppdb_infos', function (Blueprint $table) {
             $table->id('id_ppdb');
-            $table->string('poster')->nullable();    // path file poster
-            $table->string('formulir')->nullable(); // path file formulir pendaftaran
+            $table->string('poster')->nullable();       // path file poster
+            $table->string('formulir')->nullable();     // path file formulir pendaftaran
+            $table->text('syarat_ketentuan')->nullable(); // kolom syarat & ketentuan, nullable
             $table->timestamps();
         });
     }
