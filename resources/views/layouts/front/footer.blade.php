@@ -13,9 +13,8 @@
           <p><strong>Email:</strong> <span>info.esprada</span></p>
         </div>
         <div class="social-links d-flex mt-4">
-          <a href="https://facebook.com/smpn2prajekan" target="_blank" class="text-white fs-3"><i class="bi bi-facebook"></i></a>
+          <a href="https://www.tiktok.com/@infoesprada.official" target="_blank" class="text-white fs-3"><i class="bi bi-tiktok"></i></a>
           <a href="https://www.instagram.com/info.esprada" target="_blank" class="text-white fs-3"><i class="bi bi-instagram"></i></a>
-          <a href="https://twitter.com/smpn2prajekan" target="_blank" class="text-white fs-3"><i class="bi bi-twitter"></i></a>
           <a href="https://www.youtube.com/@info.esprada" target="_blank" class="text-white fs-3"><i class="bi bi-youtube"></i></a>
 
         </div>
