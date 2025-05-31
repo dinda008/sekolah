@@ -37,7 +37,7 @@ class SaranaController extends Controller
             'foto' => $fotoPath,
         ]);
 
-        return redirect()->route('sarana')->with('success', 'Data berhasil ditambahkan');
+        return redirect()->route('sarana')->with('message', 'Data Sarana dan Prasarana berhasil ditambahkan');
     }
 
     public function edit($id_sarana)
@@ -70,7 +70,7 @@ class SaranaController extends Controller
 
     $sarana->update($data);
 
-    return redirect()->route('sarana')->with('message', 'Data berhasil diperbarui');
+    return redirect()->route('sarana')->with('message', 'Data Sarana dan Prasarana berhasil diperbarui');
 }
 
     public function delete($id_sarana)

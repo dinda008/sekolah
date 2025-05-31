@@ -49,7 +49,7 @@ class BeritaController extends Controller
             'id_pegawai' => $request->id_pegawai,
         ]);        
 
-        return redirect()->route('berita')->with('success', 'Data berhasil ditambahkan');
+        return redirect()->route('berita')->with('message', 'Data berita berhasil ditambahkan');
     }
 
     // Menampilkan form edit berita
@@ -102,6 +102,6 @@ class BeritaController extends Controller
         $berita = Berita::findOrFail($id_berita);
         $berita->delete();
 
-        return redirect()->route('berita')->with('message', 'Data Profil Sekolah berhasil dihapus');
+        return redirect()->route('berita')->with('message', 'Data berita berhasil dihapus');
     }
 }

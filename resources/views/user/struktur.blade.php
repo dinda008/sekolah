@@ -13,30 +13,34 @@
     </div>
 
     <div class="container">
-        @forelse ($strukturorganisasi as $row)
-            <div class="struktur-wrapper mb-5 p-4 rounded shadow" style="background-color: #f4f9ff;">
-                
-                {{-- Gambar Struktur --}}
-                <div class="struktur-img-wrapper text-center mb-4">
-                    <img 
-                        src="{{ asset('storage/' . $row->foto) }}" 
-                        alt="Struktur Organisasi" 
-                        style="width: 100%; max-width: 800px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);">
-                </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                @forelse ($strukturorganisasi as $row)
+                    <div class="struktur-wrapper mb-5 p-4 rounded shadow" data-aos="fade-up">
+                        
+                        {{-- Gambar Struktur --}}
+                        <div class="struktur-img-wrapper text-center mb-4">
+                            <img 
+                                src="{{ asset('storage/' . $row->foto) }}" 
+                                alt="Struktur Organisasi" 
+                                style="width: 100%; max-width: 800px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);">
+                        </div>
 
-                {{-- Deskripsi --}}
-                <div class="struktur-deskripsi" style="font-size: 1.1rem; line-height: 1.8; color: #333;">
-                    {!! nl2br(e($row->keterangan)) !!}
-                </div>
+                        {{-- Deskripsi --}}
+                        <div class="struktur-deskripsi" style="font-size: 1.1rem; line-height: 1.8; color: #333;">
+                            {!! nl2br(e($row->keterangan)) !!}
+                        </div>
 
+                    </div>
+                @empty
+                    <div class="struktur-wrapper text-center p-5">
+                        <p class="text-muted mb-0" style="font-size: 1.2rem;">
+                            <em>Belum ada data struktur organisasi sekolah yang tersedia.</em>
+                        </p>
+                    </div>
+                @endforelse
             </div>
-        @empty
-            <div class="text-center py-5">
-                <p style="font-size: 1.2rem; color: #666;">
-                    Belum ada data struktur organisasi sekolah yang tersedia.
-                </p>
-            </div>
-        @endforelse
+        </div>
     </div>
 </section>
 
@@ -53,6 +57,7 @@
     .struktur-wrapper {
         background-color: rgba(240, 248, 255, 0.95);
         border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     }
 
     .struktur-img-wrapper img {

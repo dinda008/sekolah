@@ -29,7 +29,7 @@ class ProfilController extends Controller
             'tujuan' => $request->tujuan,
         ]);
 
-        return redirect()->route('profil.profil_sekolah')->with('message', 'Tambah Data Profil Sekolah berhasil ditambahkan');
+        return redirect()->route('profil.profil_sekolah')->with('message', 'Data Profil Sekolah berhasil ditambahkan');
     }
 
     // Method untuk menapilkan fitur edit
@@ -53,7 +53,7 @@ class ProfilController extends Controller
         ];
 
         ProfilSekolah::where('id_profil', $id_profil)->update($profilsekolah);
-        return redirect()->route('profil.profil_sekolah')->with('success', 'Data berhasil diupdate');
+        return redirect()->route('profil.profil_sekolah')->with('message', 'Data Profil Sekolah berhasil diupdate');
     }
 
         public function delete($id_profil)

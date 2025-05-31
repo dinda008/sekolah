@@ -31,7 +31,7 @@ class EkstraController extends Controller
             'logo' => $logoPath
         ]);
     
-        return redirect()->route('ekstra')->with('message', 'Data berhasil ditambahkan.');
+        return redirect()->route('ekstra')->with('message', 'Data Ekstrakurikuler berhasil ditambahkan.');
     }
     
     public function edit ($id_ekstra) 

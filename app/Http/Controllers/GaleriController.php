@@ -38,7 +38,7 @@ class GaleriController extends Controller
         'foto' => $foto
     ]);
 
-    return redirect()->route('galeri')->with('message', 'Kegiatan berhasil ditambahkan');
+    return redirect()->route('galeri')->with('message', 'Data Galeri Kegiatan berhasil ditambahkan');
 }
 
     public function edit($id_galeri)
@@ -71,7 +71,7 @@ class GaleriController extends Controller
 
     $galeri->save();
 
-    return redirect()->route('galeri')->with('message', 'Galeri Berhasil Diperbarui');
+    return redirect()->route('galeri')->with('message', 'Data Galeri Berhasil Diperbarui');
 }
 
 

@@ -54,7 +54,7 @@ class PegawaiController extends Controller
         'sambutan' => $request->sambutan ?? null,
     ]);
 
-    return redirect()->route('pegawai')->with('message', 'Pegawai berhasil ditambahkan!');
+    return redirect()->route('pegawai')->with('message', 'Data Pegawai berhasil ditambahkan!');
 }
 
     // Tampilkan form edit data
@@ -101,7 +101,7 @@ class PegawaiController extends Controller
 
     $pegawai->save();
 
-    return redirect()->route('pegawai')->with('success', 'Data pegawai berhasil diperbarui.');
+    return redirect()->route('pegawai')->with('message', 'Data pegawai berhasil diperbarui.');
 }
 
     public function delete($id_pegawai)

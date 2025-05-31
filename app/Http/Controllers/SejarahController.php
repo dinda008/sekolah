@@ -33,7 +33,7 @@ class SejarahController extends Controller
         ]);
         
 
-        return redirect()->route('profil.sejarah')->with('message', 'Tambah Data Sejarah berhasil ditambahkan');
+        return redirect()->route('profil.sejarah')->with('message', 'Data Sejarah berhasil ditambahkan');
 
     }
 
@@ -69,7 +69,7 @@ class SejarahController extends Controller
          $sejarah->sejarah = $request->sejarah;
          $sejarah->save();
      
-         return redirect()->route('profil.sejarah')->with('success', 'Data berhasil diupdate');
+         return redirect()->route('profil.sejarah')->with('message', 'Data Sejarah Sekolah berhasil diupdate');
      }
 
      public function delete($id_sejarah)
@@ -77,7 +77,7 @@ class SejarahController extends Controller
          $sejarah = Sejarah::findOrFail($id_sejarah);
          $sejarah->delete();
  
-         return redirect()->route('profil.sejarah')->with('message', 'Data Profil Sekolah berhasil dihapus');
+         return redirect()->route('profil.sejarah')->with('message', 'Data Sejarah Sekolah berhasil dihapus');
      }
      
 }
